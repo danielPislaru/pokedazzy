@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Grid, Paper } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+
+import PokeballImage from "../../src/assets/pokeball.png";
 import axios from "axios";
 
 const PokemonInfo = ({ pokemonName }) => {
@@ -56,6 +58,29 @@ const PokemonInfo = ({ pokemonName }) => {
     };
   }, [pokemonName]);
 
+  const StartScreen = () => {
+    return (
+      <Box
+        className="startScreen-container"
+        sx={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+      >
+        <img
+          src={PokeballImage}
+          alt="pokeball"
+          style={{ width: "100%", maxWidth: "200px" }}
+        />
+        <Typography variant="h4">Please select a pokemon</Typography>
+      </Box>
+    );
+  };
+
   return (
     <Box className="pokemon-infoContainer">
       {isError ? (
@@ -64,7 +89,7 @@ const PokemonInfo = ({ pokemonName }) => {
         <>Loading...</>
       ) : (
         <>
-          {!pokemonName && <Typography>PLease select a pokemon</Typography>}
+          {!pokemonName && <StartScreen />}
           {pokemonName && (
             <Box className={`pokemonContainer ${pokemon.type}`}>
               <Box className="basicInfo">

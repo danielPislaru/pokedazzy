@@ -14,6 +14,7 @@ const App = () => {
         backgroundColor: "neutral.light",
         display: "flex",
       }}
+      className="main-container"
     >
       <PokemonList
         setSelectedPokemon={setSelectedPokemon}
